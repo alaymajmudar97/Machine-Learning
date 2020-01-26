@@ -16,3 +16,19 @@ from sklearn.naive_bayes import GaussianNB
 clf = GaussianNB()
 clf.fit(X, Y)
 print(clf.predict([[-0.8,-1]]))
+
+
+#Use a Naive Bayes Classifier to identify emails by their authors
+
+
+import sys
+from time import time
+sys.path.append("W:/DATA SCIENTIST/Machine-Learning/tools/")
+from email_preprocess import preprocess 
+
+
+### features_train and features_test are the features for the training
+### and testing datasets, respectively
+### labels_train and labels_test are the corresponding item labels
+features_train, features_test, labels_train, labels_test = preprocess()
+
