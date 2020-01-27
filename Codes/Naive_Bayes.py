@@ -23,7 +23,7 @@ print(clf.predict([[-0.8,-1]]))
 
 import sys
 from time import time
-sys.path.append("W:/DATA SCIENTIST/Machine-Learning/tools/")
+sys.path.append("W:/DATA SCIENTIST/ud120-projects-master/tools")
 from email_preprocess import preprocess 
 
 
