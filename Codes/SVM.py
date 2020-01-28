@@ -11,7 +11,7 @@ from time import time
 sys.path.append("W:/DATA SCIENTIST/ud120-projects-master/tools")
 from email_preprocess import preprocess
 
-
+import numpy as np
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
@@ -52,6 +52,8 @@ pred = clf.predict(features_test)
 print(accuracy_score(pred,labels_test))
 
 
+
+
 # Changing various values of parameter C
 
 for x in C:
@@ -61,3 +63,22 @@ for x in C:
     pred = clf.predict(features_test)
     acc = accuracy_score(pred,labels_test)
     print(f"For value of C = {x}, accuracy is {acc}")
+    
+    
+    
+    
+    
+# Now after optimization of C value. Checking the accuracy on the whole dataset.
+    
+clf = SVC(kernel='rbf',C = 10000)
+
+clf.fit(features_train,labels_train)
+print("fitted")
+
+pred = clf.predict(features_test)
+
+print(accuracy_score(pred,labels_test))
+
+# Calculating the total number of prediction for a specific user.
+print(np.count_nonzero(pred==1))
+
