@@ -22,7 +22,7 @@ grade_slow = [features_train[ii][0] for ii in range(0, len(features_train)) if l
 bumpy_slow = [features_train[ii][1] for ii in range(0, len(features_train)) if labels_train[ii]==1]
 
 
-clf = AdaBoostClassifier(base_estimator='SVM',n_estimators=100, random_state=0)
+clf = AdaBoostClassifier(n_estimators=100, random_state=0)
 clf.fit(features_train, labels_train)
 
 
