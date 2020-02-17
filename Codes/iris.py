@@ -72,10 +72,71 @@ plt.show()
 
 #for plotting single varible we use histogram
 #pdf = smoothed histogram (KDE)
-sns.set_style("whitegrid")
+sns.set_style("whitegrid"   )
 sns.FacetGrid(iris,hue='species',size=8).map(sns.distplot,"petal_length").add_legend()
 
 
 
 #univariate analysis - One variable analysis
+# Need for Cumulative Distribution Function CDF
+# We can visually see what percentage of versicolor flowers have a petal_length more than 1.6
 
+
+iris_setosa = iris[iris['species']=='setosa']
+counts, bin_edges  = np.histogram(iris_setosa['petal_length'],bins=10,density= True)
+
+pdf = counts/sum(counts)
+print(pdf)
+print(bin_edges)
+
+
+#compute CDF
+cdf = np.cumsum(pdf)
+plt.plot(bin_edges[1:],pdf)
+plt.plot(bin_edges[1:],cdf)
+
+
+
+iris_versicolor = iris[iris['species']=='versicolor']
+counts, bin_edges  = np.histogram(iris_versicolor['petal_length'],bins=10,density= True)
+
+pdf = counts/sum(counts)
+print(pdf)
+print(bin_edges)
+
+
+#compute CDF
+cdf = np.cumsum(pdf)
+plt.plot(bin_edges[1:],pdf)
+plt.plot(bin_edges[1:],cdf)
+
+
+
+iris_virginica = iris[iris['species']=='virginica']
+counts, bin_edges  = np.histogram(iris_virginica['petal_length'],bins=10,density= True)
+
+pdf = counts/sum(counts)
+print(pdf)
+print(bin_edges)
+
+
+#compute CDF
+cdf = np.cumsum(pdf)
+plt.plot(bin_edges[1:],pdf)
+plt.plot(bin_edges[1:],cdf)
+
+
+plt.show()
+
+
+sns.boxplot(x='species',y='petal_length', data = iris)
+plt.show()
+
+
+sns.violinplot(x='species',y='petal_length', data = iris,size=8)
+plt.show()
+
+
+# 2d density plot, contoursplot
+
+sns.jointplot(x="petal_length",  y='petal_width', data=iris_setosa,kind ='kde')
