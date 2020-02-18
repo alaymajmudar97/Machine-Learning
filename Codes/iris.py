@@ -140,3 +140,4 @@ plt.show()
 # 2d density plot, contoursplot
 
 sns.jointplot(x="petal_length",  y='petal_width', data=iris_setosa,kind ='kde')
+  
