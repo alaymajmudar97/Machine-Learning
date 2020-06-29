@@ -42,6 +42,7 @@ print('Missing: %d' % sum(np.isnan(X_transform).flatten()))
 model = RandomForestClassifier()
 
 for s in strategies:
+
     pipeline = Pipeline(steps=[('i',KNNImputer(n_neighbors=int(s))),('m',model)])
     
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
